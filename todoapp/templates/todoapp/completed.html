@@ -1,0 +1,18 @@
+{% extends "todoapp/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <h1>Completed Tasks</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="list-group">
+                {% for task in tasks %}
+                    <a href="{% url 'taskinfo' task.id %}" class="list-group-item list-group-item-action{% if task.important %} list-group-item-warning{% endif %}"><b>{{ task.title }}</b> - Completed {{ task.completed|date:'M j Y H:i' }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
